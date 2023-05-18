@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Puzzle simon says.unity
+- path: Assets/Scenes/puzzle luces.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
