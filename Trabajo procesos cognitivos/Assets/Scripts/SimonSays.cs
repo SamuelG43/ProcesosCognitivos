@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SimonSays : MonoBehaviour
 {
+    private int intentosfallidos=0;
+    public TMPro.TMP_Text textointentosfallidos;
     public GameObject whiteButton;
     public List<GameObject> buttons;
     public int sequenceLength;
@@ -42,6 +44,7 @@ public bool oprimirbool=false;
     // Start is called before the first frame update
     void Start()
     {
+        textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
         azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
         primarysecuence = sequenceLength;
@@ -152,6 +155,8 @@ public bool oprimirbool=false;
                                 currentIndex = 0;
                                 sequenceLength = primarysecuence;
                                 StartCoroutine(failsoundcoroutine());
+                                intentosfallidos++;
+                                textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
                                 azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
                                 azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
                                 Debug.Log("Game Over");

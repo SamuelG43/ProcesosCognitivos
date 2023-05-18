@@ -8,6 +8,8 @@ public class PuzzleLightsManager : MonoBehaviour
 {
     public GameObject ganaste;
     private int puntosGanados = 0;
+    private int intentosfallidos=0;
+    public TMPro.TMP_Text textointentosfallidos;
     [SerializeField] private GameObject parte1;
 
     [SerializeField] private GameObject parte2;
@@ -33,6 +35,7 @@ public class PuzzleLightsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
         ganaste.SetActive(false);
       
     }
@@ -52,6 +55,7 @@ public class PuzzleLightsManager : MonoBehaviour
             {
                 if (cambiocorrtinas == false)
                 {
+                   
                     cambiocorrtinas = true;
                     StartCoroutine(parte1cicle());
                 }
@@ -139,6 +143,11 @@ public class PuzzleLightsManager : MonoBehaviour
                     cicle1win = true;
                    
                 }
+                else
+                {
+                    intentosfallidos++;
+                    textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
+                }
             }
             if (puntosGanados == 1)
             {
@@ -146,6 +155,11 @@ public class PuzzleLightsManager : MonoBehaviour
                 {
                     cicle2win = true;
                   
+                }
+                else
+                {
+                    intentosfallidos++;
+                    textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
                 }
             }
 
@@ -155,6 +169,11 @@ public class PuzzleLightsManager : MonoBehaviour
                 {
                     cicle3win = true;
 
+                }
+                else
+                {
+                    intentosfallidos++;
+                    textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
                 }
             }
 
