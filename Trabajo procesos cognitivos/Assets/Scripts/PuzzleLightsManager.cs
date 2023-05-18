@@ -20,6 +20,7 @@ public class PuzzleLightsManager : MonoBehaviour
     bool cicle2 = true;
     bool cicle2win = false;
     public float velocidadParte2;
+    public GameObject Indicators;
 
     private bool cambiobool = false;
 
@@ -64,7 +65,7 @@ public class PuzzleLightsManager : MonoBehaviour
 
                     StartCoroutine(wincicle1());
 
-                    puntosGanados++;
+                  
                 }
                 
             }
@@ -91,7 +92,7 @@ public class PuzzleLightsManager : MonoBehaviour
 
                     StartCoroutine(wincicle2());
 
-                    puntosGanados++;
+                  
                 }
 
             }
@@ -118,7 +119,7 @@ public class PuzzleLightsManager : MonoBehaviour
 
                     StartCoroutine(wincicle3());
 
-                    puntosGanados++;
+                
                 }
 
             }
@@ -228,13 +229,13 @@ public class PuzzleLightsManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(velocidadParte2);
-        numeroactual = Random.Range(0, parte2.transform.childCount);
-        if (parte2.transform.GetChild(numeroactual).tag == "Verde")
+        numeroactual = Random.Range(0, parte1.transform.childCount);
+        if (parte1.transform.GetChild(numeroactual).tag == "Verde")
         {
 
             esverde = true;
-            parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
             yield return new WaitForSeconds(velocidadParte2);
             StartCoroutine(endcicle2());
 
@@ -242,8 +243,8 @@ public class PuzzleLightsManager : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(velocidadParte2);
-            parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
             yield return new WaitForSeconds(velocidadParte2);
             StartCoroutine(endcicle2());
         }
@@ -263,8 +264,8 @@ public class PuzzleLightsManager : MonoBehaviour
 
         yield return new WaitForSeconds(velocidadParte1);
         esverde = false;
-        parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-        parte2.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+        parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
         yield return new WaitForSeconds(velocidadParte2);
 
 
@@ -279,13 +280,13 @@ public class PuzzleLightsManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(velocidadParte3);
-        numeroactual = Random.Range(0, parte3.transform.childCount);
-        if (parte3.transform.GetChild(numeroactual).tag == "Verde")
+        numeroactual = Random.Range(0, parte1.transform.childCount);
+        if (parte1.transform.GetChild(numeroactual).tag == "Verde")
         {
 
             esverde = true;
-            parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
             yield return new WaitForSeconds(velocidadParte3);
             StartCoroutine(endcicle3());
 
@@ -293,8 +294,8 @@ public class PuzzleLightsManager : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(velocidadParte3);
-            parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
             yield return new WaitForSeconds(velocidadParte3);
             StartCoroutine(endcicle3());
         }
@@ -314,8 +315,8 @@ public class PuzzleLightsManager : MonoBehaviour
 
         yield return new WaitForSeconds(velocidadParte3);
         esverde = false;
-        parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-        parte3.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+        parte1.transform.GetChild(numeroactual).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
         yield return new WaitForSeconds(velocidadParte3);
 
 
@@ -325,16 +326,9 @@ public class PuzzleLightsManager : MonoBehaviour
     public IEnumerator wincicle1()
     {
         yield return new WaitForSeconds(0.3f);
-        for (int i = 0; i < parte1.transform.childCount; i++)
-        {
-            StopCoroutine(parte1cicle());
-            StopCoroutine(endcicle1());
-            yield return new WaitForSeconds(0.1f);
-            parte1.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte1.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
-            yield return new WaitForSeconds(0.1f);
-
-        }
+      Indicators.transform.GetChild(0).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+        Indicators.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+        puntosGanados++;
         cambiocorrtinas = false;
 
     }
@@ -343,15 +337,9 @@ public class PuzzleLightsManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
 
-
-        for (int i = 0; i < parte2.transform.childCount; i++)
-        {
-            yield return new WaitForSeconds(0.1f);
-            parte2.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte2.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
-            yield return new WaitForSeconds(0.1f);
-
-        }
+        Indicators.transform.GetChild(1).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+        Indicators.transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+        puntosGanados++;
 
         cambiocorrtinas = false;
     }
@@ -360,16 +348,17 @@ public class PuzzleLightsManager : MonoBehaviour
 
     {
         yield return new WaitForSeconds(0.3f);
-
-        for (int i = 0; i < parte3.transform.childCount; i++)
+        Indicators.transform.GetChild(2).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+        Indicators.transform.GetChild(2).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+        puntosGanados++;
+        for (int i = 0; i < parte1.transform.childCount; i++)
         {
             yield return new WaitForSeconds(0.1f);
-            parte3.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            parte3.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            parte1.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+            parte1.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
             yield return new WaitForSeconds(0.1f);
 
         }
-
         cambiocorrtinas = false;
         Ganaste();
     }
