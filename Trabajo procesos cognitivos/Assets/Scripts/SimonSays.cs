@@ -24,6 +24,7 @@ public class SimonSays : MonoBehaviour
     private Color colorGreenLit;
     private Color colorYellowLit;
     private Color colorWhitelit;
+    public GameObject failsound;
  public bool acabar=false;
     public float tiempoEntreNiveles;
 public bool oprimirbool=false;
@@ -90,6 +91,7 @@ public bool oprimirbool=false;
                         StartCoroutine(PlaySequencePressed(4));
                         GenerateSequence();
                         StartCoroutine(PlaySequence());
+                        playerTurn = true;
                     }
                     if (hit.collider != null && hit.collider.transform.name == "Button_Object_red")
                     {
@@ -127,17 +129,39 @@ public bool oprimirbool=false;
                         }
                         else
                         {
-                            indicatorsnumber = 0;
-                            currentIndex = 0;
-                            sequenceLength = primarysecuence;
-                            azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-                            azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
-                            Debug.Log("Game Over");
-                            puntos = 0;
-                            for (int i = 0; i < indicators.transform.childCount; i++)
+                            if (hit.collider != null && hit.collider.transform.name == "Button_Object_start")
                             {
-                                indicators.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-                                indicators.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                                indicatorsnumber = 0;
+                                currentIndex = 0;
+                                sequenceLength = primarysecuence;
+                
+                                azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                                azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                                Debug.Log("Game Over");
+                                puntos = 0;
+                                for (int i = 0; i < indicators.transform.childCount; i++)
+                                {
+                                    indicators.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                                    indicators.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                                }
+                                playerTurn = false;
+                            }
+                            else
+                            {
+                                indicatorsnumber = 0;
+                                currentIndex = 0;
+                                sequenceLength = primarysecuence;
+                                StartCoroutine(failsoundcoroutine());
+                                azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                                azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                                Debug.Log("Game Over");
+                                puntos = 0;
+                                for (int i = 0; i < indicators.transform.childCount; i++)
+                                {
+                                    indicators.transform.GetChild(i).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                                    indicators.transform.GetChild(i).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                                }
+                                playerTurn = false;
                             }
                         }
 
@@ -174,6 +198,11 @@ public bool oprimirbool=false;
         }
     }
 
+    public IEnumerator failsoundcoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        failsound.GetComponent<AudioSource>().Play();
+    }
     public void avanzarnivel()
     {
         
