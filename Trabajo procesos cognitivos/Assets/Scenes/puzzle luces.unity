@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,6 +229,18 @@ PrefabInstance:
     - target: {fileID: 5921844205676328874, guid: 242c0c3dc592f7f42bec297149885edc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921844206274982118, guid: 242c0c3dc592f7f42bec297149885edc, type: 3}
+      propertyPath: m_text
+      value: 'Oprime
+
+        Click
+
+        izquierdo
+
+        para
+
+        Continuar'
       objectReference: {fileID: 0}
     - target: {fileID: 5921844207554573248, guid: 242c0c3dc592f7f42bec297149885edc, type: 3}
       propertyPath: m_Sprite
@@ -1191,6 +1203,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 107b43da951fedb4b85083f3f4ad5629, type: 3}
+    - target: {fileID: 1329017003633448684, guid: 4a5abe77025d7b841885e30419dbff1a, type: 3}
+      propertyPath: m_text
+      value: 'Oprime
+
+        Click
+
+        izquierdo
+
+        para
+
+        Continuar'
+      objectReference: {fileID: 0}
     - target: {fileID: 1329017004009059637, guid: 4a5abe77025d7b841885e30419dbff1a, type: 3}
       propertyPath: m_Name
       value: fondo_instrucciones

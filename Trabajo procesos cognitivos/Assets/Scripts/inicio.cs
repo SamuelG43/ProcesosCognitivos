@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class inicio : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class inicio : MonoBehaviour
     public GameObject portada;
     public GameObject instrucciones;
     public GameObject otherUi;
+
     private int fases = 0;
     // Start is called before the first frame update
     void Start()
@@ -32,9 +35,13 @@ public class inicio : MonoBehaviour
             otherUi.SetActive(true);
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetMouseButtonDown(0))
         {
             fases++;
         }
+
     }
+
+   
 }
+

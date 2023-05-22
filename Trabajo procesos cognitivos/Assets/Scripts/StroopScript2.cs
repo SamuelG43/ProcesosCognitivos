@@ -15,15 +15,15 @@ public class StroopScript2 : MonoBehaviour
     public Button startButton;
     public GameObject failsound;
     public GameObject correctSound;
-    public Button mainButton;
+
 
     private int indNombre;
     private int score = 0;
     private int attempt = 0;
     private float timer = 100f;
 
-    private string[] colorNames = { "ROJO", "VERDE", "AZUL",  "NARANJA", "MORADO" };
-    private Color[] colors = { Color.red, Color.green, Color.blue,  new Color(1f, 0.5f, 0f), new Color(0.5f, 0f, 1f) };
+    private string[] colorNames = { "ROJO", "VERDE", "AZUL", "NARANJA", "MORADO" };
+    private Color[] colors = { Color.red, Color.green, Color.blue, new Color(1f, 0.5f, 0f), new Color(0.5f, 0f, 1f) };
 
     private bool gameActive = false;
 
@@ -31,7 +31,7 @@ public class StroopScript2 : MonoBehaviour
     {
         restartButton.gameObject.SetActive(false);
         startButton.onClick.AddListener(StartGame);
-        mainButton.gameObject.SetActive(false);
+
     }
 
     void StartGame()
@@ -58,7 +58,7 @@ public class StroopScript2 : MonoBehaviour
             {
                 CheckAnswer(Color.blue);
             }
-          
+
             else if (Input.GetKeyDown(KeyCode.N))
             {
                 CheckAnswer(new Color(1f, 0.5f, 0f));
@@ -76,7 +76,7 @@ public class StroopScript2 : MonoBehaviour
     {
         timer = 6;
         yield return new WaitForSeconds(1f);
-        
+
         int colorIndex = Random.Range(0, 5);
         int nameIndex = Random.Range(0, 5);
         indNombre = colorIndex;
@@ -102,7 +102,7 @@ public class StroopScript2 : MonoBehaviour
 
         messageText.text = "";
 
-        
+
     }
 
     void CheckAnswer(Color color)
@@ -111,7 +111,7 @@ public class StroopScript2 : MonoBehaviour
         {
             correctSound.GetComponent<AudioSource>().Play();
             timer = 6;
-            score++;          
+            score++;
             StartCoroutine(ShowStroopText());
         }
         else
@@ -130,7 +130,7 @@ public class StroopScript2 : MonoBehaviour
 
         if (timer <= 0)
         {
-           
+
             CheckAnswer(Color.white);
         }
     }
@@ -142,8 +142,8 @@ public class StroopScript2 : MonoBehaviour
         colorText.text = "";
         colorText.color = Color.white;
         restartButton.gameObject.SetActive(true);
-        mainButton.gameObject.SetActive(true);
-        mainButton.onClick.AddListener(PlayMainMenu);
+   
+   
     }
 
     public void RestartGame()
@@ -154,9 +154,5 @@ public class StroopScript2 : MonoBehaviour
         gameActive = true;
         restartButton.gameObject.SetActive(false);
         StartCoroutine(ShowStroopText());
-    }
-    public void PlayMainMenu()
-    {
-        SceneManager.LoadScene(0);
     }
 }
