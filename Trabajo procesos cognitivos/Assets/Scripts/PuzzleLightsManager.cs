@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class PuzzleLightsManager : MonoBehaviour
 {
+    public GameObject correct;
     public GameObject ganaste;
     private int puntosGanados = 0;
     private int intentosfallidos=0;
@@ -140,6 +141,7 @@ public class PuzzleLightsManager : MonoBehaviour
             {
                 if (esverde==true)
                 {
+                    StartCoroutine(correctcourtine());
                     cicle1win = true;
                    
                 }
@@ -153,6 +155,7 @@ public class PuzzleLightsManager : MonoBehaviour
             {
                 if (esverde == true)
                 {
+                    StartCoroutine(correctcourtine());
                     cicle2win = true;
                   
                 }
@@ -167,6 +170,7 @@ public class PuzzleLightsManager : MonoBehaviour
             {
                 if (esverde == true)
                 {
+                    StartCoroutine(correctcourtine());
                     cicle3win = true;
 
                 }
@@ -183,7 +187,12 @@ public class PuzzleLightsManager : MonoBehaviour
 
 
    
+    public IEnumerator correctcourtine()
+    {
+        yield return new WaitForSeconds(0.4f);
+        correct.GetComponent<AudioSource>().Play();
 
+    }
     private void Ganaste()
     {
 
@@ -344,7 +353,7 @@ public class PuzzleLightsManager : MonoBehaviour
 
     public IEnumerator wincicle1()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
       Indicators.transform.GetChild(0).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         Indicators.transform.GetChild(0).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
         puntosGanados++;
@@ -354,7 +363,7 @@ public class PuzzleLightsManager : MonoBehaviour
     public IEnumerator wincicle2()
 
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
 
         Indicators.transform.GetChild(1).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         Indicators.transform.GetChild(1).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
@@ -366,7 +375,7 @@ public class PuzzleLightsManager : MonoBehaviour
     public IEnumerator wincicle3()
 
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         Indicators.transform.GetChild(2).GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         Indicators.transform.GetChild(2).GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
         puntosGanados++;

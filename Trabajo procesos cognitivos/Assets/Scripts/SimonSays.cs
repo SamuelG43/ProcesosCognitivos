@@ -5,6 +5,7 @@ using UnityEngine;
 public class SimonSays : MonoBehaviour
 {
     private int intentosfallidos=0;
+    public GameObject correcto;
     public TMPro.TMP_Text textointentosfallidos;
     public GameObject whiteButton;
     public List<GameObject> buttons;
@@ -172,7 +173,9 @@ public bool oprimirbool=false;
 
                         if (currentIndex == sequence.Count)
                         {
+                            StartCoroutine(correctsoundcoroutine());
                             puntos++;
+                          
                             if (puntos == indicators.transform.childCount)
                             {
                                 StartCoroutine(tiempoExtra());
@@ -207,6 +210,12 @@ public bool oprimirbool=false;
     {
         yield return new WaitForSeconds(0.2f);
         failsound.GetComponent<AudioSource>().Play();
+    }
+
+    public IEnumerator correctsoundcoroutine()
+    {
+        yield return new WaitForSeconds(0.4f);
+        correcto.GetComponent<AudioSource>().Play();
     }
     public void avanzarnivel()
     {
