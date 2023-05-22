@@ -13,6 +13,7 @@ public class StroopScript2 : MonoBehaviour
     public Button restartButton;
     public Button startButton;
     public GameObject failsound;
+    public GameObject correctSound;
 
     private int indNombre;
     private int score = 0;
@@ -105,8 +106,9 @@ public class StroopScript2 : MonoBehaviour
     {
         if (color == colors[indNombre])
         {
+            correctSound.GetComponent<AudioSource>().Play();
             timer = 6;
-            score++;
+            score++;          
             StartCoroutine(ShowStroopText());
         }
         else
