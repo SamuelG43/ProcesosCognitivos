@@ -2622,6 +2622,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465245491}
     m_Modifications:
+    - target: {fileID: 1329017003457226086, guid: 4a5abe77025d7b841885e30419dbff1a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d3f5881f6df7741b83513d7f323b60, type: 3}
     - target: {fileID: 1329017004009059637, guid: 4a5abe77025d7b841885e30419dbff1a, type: 3}
       propertyPath: m_Name
       value: fondo_instrucciones
