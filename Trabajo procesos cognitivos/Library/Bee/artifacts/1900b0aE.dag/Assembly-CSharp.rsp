@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Columna.cs"
 "Assets/Scripts/Core.cs"
+"Assets/Scripts/inicio.cs"
 "Assets/Scripts/PuzzleLightsManager.cs"
 "Assets/Scripts/SimonSays.cs"
 "Assets/Scripts/StroopScript.cs"
