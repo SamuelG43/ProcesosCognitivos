@@ -11,6 +11,8 @@ public class StroopScript2 : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timerText;
     public Button restartButton;
+    public Button startButton;
+    public GameObject failsound;
 
     private int indNombre;
     private int score = 0;
@@ -20,11 +22,19 @@ public class StroopScript2 : MonoBehaviour
     private string[] colorNames = { "ROJO", "VERDE", "AZUL",  "NARANJA", "MORADO" };
     private Color[] colors = { Color.red, Color.green, Color.blue,  new Color(1f, 0.5f, 0f), new Color(0.5f, 0f, 1f) };
 
-    private bool gameActive = true;
+    private bool gameActive = false;
 
     void Start()
     {
-        timer = 6f;
+        restartButton.gameObject.SetActive(false);
+        startButton.onClick.AddListener(StartGame);
+    }
+
+    void StartGame()
+    {
+        startButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        gameActive = true;
         StartCoroutine(ShowStroopText());
     }
 
@@ -60,6 +70,7 @@ public class StroopScript2 : MonoBehaviour
 
     IEnumerator ShowStroopText()
     {
+        timer = 6;
         yield return new WaitForSeconds(1f);
         
         int colorIndex = Random.Range(0, 5);
@@ -103,6 +114,7 @@ public class StroopScript2 : MonoBehaviour
             timer = 6;
             messageText.text = "WRONG";
             StartCoroutine(ShowStroopText());
+            failsound.GetComponent<AudioSource>().Play();
         }
     }
 
