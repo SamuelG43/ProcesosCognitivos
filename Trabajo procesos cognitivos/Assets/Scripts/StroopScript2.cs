@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StroopScript2 : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class StroopScript2 : MonoBehaviour
     public Button startButton;
     public GameObject failsound;
     public GameObject correctSound;
+    public Button mainButton;
 
     private int indNombre;
     private int score = 0;
@@ -29,6 +31,7 @@ public class StroopScript2 : MonoBehaviour
     {
         restartButton.gameObject.SetActive(false);
         startButton.onClick.AddListener(StartGame);
+        mainButton.gameObject.SetActive(false);
     }
 
     void StartGame()
@@ -139,6 +142,8 @@ public class StroopScript2 : MonoBehaviour
         colorText.text = "";
         colorText.color = Color.white;
         restartButton.gameObject.SetActive(true);
+        mainButton.gameObject.SetActive(true);
+        mainButton.onClick.AddListener(PlayMainMenu);
     }
 
     public void RestartGame()
@@ -149,5 +154,9 @@ public class StroopScript2 : MonoBehaviour
         gameActive = true;
         restartButton.gameObject.SetActive(false);
         StartCoroutine(ShowStroopText());
+    }
+    public void PlayMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

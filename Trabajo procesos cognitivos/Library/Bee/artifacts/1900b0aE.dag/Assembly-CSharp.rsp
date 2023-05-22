@@ -352,6 +352,7 @@
 "Assets/Scripts/Columna.cs"
 "Assets/Scripts/Core.cs"
 "Assets/Scripts/inicio.cs"
+"Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PuzzleLightsManager.cs"
 "Assets/Scripts/SimonSays.cs"
 "Assets/Scripts/StroopScript.cs"

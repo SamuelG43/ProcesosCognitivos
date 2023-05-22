@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class SimonSays : MonoBehaviour
 {
     private int intentosfallidos=0;
@@ -40,11 +41,14 @@ public bool oprimirbool=false;
     int primarysecuence;
 
     public GameObject azul;
-  
+    public Button mainButton;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        mainButton.gameObject.SetActive(true);
+        mainButton.onClick.AddListener(PlayMainMenu);
         textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
         azul.transform.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
         azul.transform.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
@@ -76,6 +80,7 @@ public bool oprimirbool=false;
     // Update is called once per frame
     void Update()
     {
+        
         ray =
           Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -429,5 +434,8 @@ public bool oprimirbool=false;
         indicatorsnumber = 0;
     }
 
-    
+    public void PlayMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

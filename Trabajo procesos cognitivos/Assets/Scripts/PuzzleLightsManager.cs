@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PuzzleLightsManager : MonoBehaviour
 {
@@ -32,13 +34,16 @@ public class PuzzleLightsManager : MonoBehaviour
     public float velocidadParte3;
     private bool esverde=false;
     private int numeroactual;
- 
+    public Button mainButton;
+
     // Start is called before the first frame update
     void Start()
     {
         textointentosfallidos.text = "Intentos Fallidos:  " + intentosfallidos.ToString();
         ganaste.SetActive(false);
-      
+        mainButton.gameObject.SetActive(true);
+        mainButton.onClick.AddListener(PlayMainMenu);
+
     }
 
     private void FixedUpdate()
@@ -47,8 +52,7 @@ public class PuzzleLightsManager : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-
+    { 
         tiempo += Time.deltaTime;
         if (puntosGanados == 0)
         {
@@ -197,6 +201,7 @@ public class PuzzleLightsManager : MonoBehaviour
     {
 
         ganaste.SetActive(true);
+        
     }
 
     public IEnumerator parte1cicle()
@@ -402,5 +407,8 @@ public class PuzzleLightsManager : MonoBehaviour
     {
         cambiobool = true;
     }
-
+    public void PlayMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
